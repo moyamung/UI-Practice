@@ -24,8 +24,9 @@ public class RollingUI : MonoBehaviour
         {
             buttons[idx] = transform.GetChild(idx);
             buttonPosition[idx] = -idx;
+            buttons[idx].GetComponent<RollingButton>().SetButton(UIRadius, scrollSpeed * buttonPosition[idx], scrollSpeed, menuSize);
         }
-        Display();
+        Display2();
     }
 
     // Update is called once per frame
@@ -51,13 +52,21 @@ public class RollingUI : MonoBehaviour
         }
     }
 
+    void Display2()
+    {
+        for (int idx = 0; idx < buttonCount; idx++)
+        {
+            buttons[idx].GetComponent<RollingButton>().SetTargetAngle(scrollSpeed * buttonPosition[idx]);
+        }
+    }
+
     void UIScroll(int moveDelta)
     {
         for (int idx = 0; idx < buttonCount; idx++)
         {
             buttonPosition[idx] += moveDelta;
         }
-        Display();
+        Display2();
     }
 
     public void OnScrollWheel(InputValue input)
