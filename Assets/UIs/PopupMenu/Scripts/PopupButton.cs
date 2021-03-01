@@ -32,5 +32,8 @@ public class PopupButton : MonoBehaviour
             yield return null;
         }
         transform.localPosition = Publics.CirclePos(end, angle);
+        if (end == 0f)
+            gameObject.SetActive(false);
     }
+
 }
