@@ -39,9 +39,7 @@ public class RollingUI : MonoBehaviour
     {
         for (int idx = 0; idx < buttonCount; idx++)
         {
-            buttons[idx].localPosition = new Vector3(UIRadius * Mathf.Cos(scrollSpeed * buttonPosition[idx]),
-                                                     UIRadius * Mathf.Sin(scrollSpeed * buttonPosition[idx]),
-                                                     0);
+            buttons[idx].localPosition = Publics.CirclePos(UIRadius, scrollSpeed * buttonPosition[idx]);
             int order = menuSize - Mathf.Abs(buttonPosition[idx]);
             order = Mathf.Clamp(order, 0, menuSize);
             buttons[idx].GetComponent<Canvas>().sortingOrder = order;

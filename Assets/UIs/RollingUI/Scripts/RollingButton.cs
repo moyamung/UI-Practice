@@ -49,9 +49,7 @@ public class RollingButton : MonoBehaviour
                 angle -= rotateSpeed * Time.deltaTime;
             }
         }
-        transform.localPosition = new Vector3(radius * Mathf.Cos(angle),
-                                              radius * Mathf.Sin(angle),
-                                              0);
+        transform.localPosition = Publics.CirclePos(radius, angle);
         Display();
     }
 
@@ -61,9 +59,7 @@ public class RollingButton : MonoBehaviour
         angle = _angle;
         border = _border;
         menuSize = _menuSize;
-        transform.localPosition = new Vector3(radius * Mathf.Cos(angle),
-                                              radius * Mathf.Sin(angle),
-                                              0);
+        transform.localPosition = Publics.CirclePos(radius, angle);
         targetAngle = angle;
         Display();
     }
@@ -75,13 +71,16 @@ public class RollingButton : MonoBehaviour
 
     public void Display()
     {
-        int pos = (int)((angle + border * 0.5f) / border);
+        int pos = Mathf.RoundToInt(angle / border);
         int order = menuSize - Mathf.Abs(pos);
         order = Mathf.Clamp(order, 0, menuSize);
         GetComponent<Canvas>().sortingOrder = order;
         //buttons[idx].GetComponent<CanvasRenderer>().SetAlpha((float)order / menuSize);
         var buttonRenderers = GetComponentsInChildren<CanvasRenderer>();
         foreach (CanvasRenderer renderer in buttonRenderers)
-            renderer.SetAlpha((float)order / menuSize);
+        {
+            float alpha = Mathf.Clamp(1 - Mathf.Abs(angle) / border / (float)menuSize, 0, 1);
+            renderer.SetAlpha(alpha);
+        }
     }
 }

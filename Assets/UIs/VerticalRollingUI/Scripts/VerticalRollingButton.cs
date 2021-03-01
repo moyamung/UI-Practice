@@ -84,7 +84,7 @@ public class VerticalRollingButton : MonoBehaviour
 
     public void Display()
     {
-        int pos = (int)((angle + border * 0.5f) / border);
+        int pos = Mathf.RoundToInt(angle / border);
         int order = menuSize - Mathf.Abs(pos);
         order = Mathf.Clamp(order, 0, menuSize);
         GetComponent<Canvas>().sortingOrder = order;

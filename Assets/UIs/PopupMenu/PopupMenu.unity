@@ -626,7 +626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 240
   time: 0.2
-  cancelButton: {fileID: 0}
+  cancelButton: {fileID: 1768388465}
   isEnabled: 0
 --- !u!114 &777937565
 MonoBehaviour:
@@ -1224,6 +1224,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc66d191694161b4fbc159f5df1e424e, type: 3}
+--- !u!1 &1768388465 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5676456398448049791, guid: bc66d191694161b4fbc159f5df1e424e, type: 3}
+  m_PrefabInstance: {fileID: 1982882949}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1848472125
 PrefabInstance:
   m_ObjectHideFlags: 0

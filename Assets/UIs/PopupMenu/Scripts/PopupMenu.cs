@@ -43,10 +43,10 @@ public class PopupMenu : MonoBehaviour
         foreach (PopupButton button in buttons)
         {
             button.gameObject.SetActive(true);
-            StartCoroutine(button.Animate(0f, radius, (float)idx / len * 2f * Mathf.PI, time, time * idx));
+            StartCoroutine(button.Animate(0f, radius, (float)idx / len * 2f * Mathf.PI, time, time * idx * 0.5f));
             idx++;
         }
-        cancelButton.SetActive(true);
+        Invoke("CancelButtonEnable", time * idx * 0.5f);
         isEnabled = true;
     }
 
@@ -64,5 +64,10 @@ public class PopupMenu : MonoBehaviour
         }
         cancelButton.SetActive(false);
         isEnabled = false;
+    }
+
+    void CancelButtonEnable()
+    {
+        cancelButton.SetActive(true);
     }
 }
